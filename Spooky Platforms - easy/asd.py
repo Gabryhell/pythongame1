@@ -131,7 +131,7 @@ while running:
         screen.blit(bg_img, (0, 0))
         #jump
         input_kb = pygame.key.get_pressed()
-        if jump == False and input_kb[pygame.K_UP] and falling == False:
+        if jump == False and (input_kb[pygame.K_UP] or input_kb[pygame.K_SPACE]) and falling == False:
             jump = True
         if jump:
             y -= jump_vel1
@@ -149,7 +149,7 @@ while running:
                 x = tile1x + 35
                 y = tile1y - 100
                 camOffsetX = 0
-        if input_kb[pygame.K_UP] and DoubleJump and jump and _1DoubleJump == False and count > 60:
+        if (input_kb[pygame.K_UP] or input_kb[pygame.K_SPACE])   and DoubleJump and jump and _1DoubleJump == False and count > 60:
                 jump_vel1 = 12.5
                 _1DoubleJump = True
         if pygame.mouse.get_pressed()[0] and Shotgun_bool and shooting == False and _1Shot == False:
@@ -177,10 +177,10 @@ while running:
                 lvlCount = 3
 
         #Movement
-        if input_kb[pygame.K_LEFT] and x != 0 and shooting == False:
+        if (input_kb[pygame.K_LEFT] or input_kb[pygame.K_a]) and x != 0 and shooting == False:
             x -= vel
             right_left = False
-        if input_kb[pygame.K_RIGHT] and x + 50 != screen_width and shooting == False:
+        if (input_kb[pygame.K_RIGHT] or input_kb[pygame.K_d]) and x + 50 != screen_width and shooting == False:
             x += vel
             right_left = True
         if right_left:
